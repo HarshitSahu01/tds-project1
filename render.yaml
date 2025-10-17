@@ -1,0 +1,23 @@
+services:
+  # A name for your web service
+  - name: llm-code-deployer
+    # The type of service
+    type: web
+    # The runtime environment
+    runtime: python
+    # Your GitHub repository URL
+    repo: https://github.com/HarshitSahu01/tds-project1 # 👈 CHANGE THIS
+    # The branch to deploy from
+    branch: main
+    # Commands to run on build
+    buildCommand: "pip install -r requirements.txt"
+    # The command to start your server
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    # Define environment variables (secrets will be added separately)
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: GITHUB_USERNAME
+        value: HarshitSahu01 # 👈 CHANGE THIS
+      - key: POLLING_TIME
+        value: 20
